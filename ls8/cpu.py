@@ -2,12 +2,24 @@
 
 import sys
 
+LDI = 0b10000010
+PRN = 0b01000111
+HLT = 0b00000001
+
+
 class CPU:
     """Main CPU class."""
 
     def __init__(self):
         """Construct a new CPU."""
-        pass
+        self.ram = [0] * 256
+        self.registers = [0] * 8 # R0-R7 this just makes a big array of eight zero's
+        self.pc = 0 # Program Counter, address of the currently-executing instuction
+        # "Variables" in hardware. Known as "registers".
+        # There are a fixed number of registers
+        # They have fixed names
+        #  R0, R1, R2, ... , R6, R7
+        # registers can hold a single byte
 
     def load(self):
         """Load a program into memory."""
@@ -15,7 +27,7 @@ class CPU:
         address = 0
 
         # For now, we've just hardcoded a program:
-
+ 
         program = [
             # From print8.ls8
             0b10000010, # LDI R0,8
